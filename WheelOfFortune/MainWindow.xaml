@@ -10,56 +10,66 @@
         Height="600"
         Style="{StaticResource MaterialDesignWindow}"
         mc:Ignorable="d">
-    <Grid Margin="12">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*" />
-            <ColumnDefinition Width="2*" />
-        </Grid.ColumnDefinitions>
+    <materialDesign:DialogHost DialogContentUniformCornerRadius="16">
+        <Grid Margin="12">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
 
-        <materialDesign:Card Grid.Column="0"
-                             Margin="8"
-                             Padding="8">
-            <Grid>
-                <Canvas x:Name="WheelCanvas"
-                        Background="Transparent"
-                        Loaded="WheelCanvas_Loaded"
-                        SizeChanged="WheelCanvas_SizeChanged" />
-            </Grid>
-        </materialDesign:Card>
+            <materialDesign:Card Grid.Column="0"
+                                 Margin="8"
+                                 Padding="8"
+                                 UniformCornerRadius="16">
+                <Grid>
+                    <Canvas x:Name="WheelCanvas"
+                            Background="Transparent"
+                            Loaded="WheelCanvas_Loaded"
+                            SizeChanged="WheelCanvas_SizeChanged" />
+                </Grid>
+            </materialDesign:Card>
 
-        <StackPanel Grid.Column="1"
-                    Margin="8"
-                    Orientation="Vertical">
-            <TextBlock Margin="4"
-                       FontWeight="SemiBold"
-                       Text="Enter one slice per line:" />
-            <TextBox x:Name="SlicesTextBox"
-                     Height="300"
-                     Margin="4"
-                     AcceptsReturn="True"
-                     VerticalScrollBarVisibility="Auto" />
+            <StackPanel Grid.Column="1"
+                        Margin="8"
+                        Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Border BorderThickness="1">
+                        <Button Command="{Binding ImportFromClipboardCommand}"
+                                Content="{materialDesign:PackIcon Kind=ClipboardArrowDownOutline}"
+                                ToolTip="Import from clipboard" />
+                    </Border>
+                </StackPanel>
+                <TextBox Height="300"
+                         Margin="4"
+                         VerticalContentAlignment="Top"
+                         materialDesign:HintAssist.Hint="Enter one slice per line"
+                         AcceptsReturn="True"
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         Text="{Binding SliceText, UpdateSourceTrigger=PropertyChanged, Delay=100}"
+                         VerticalScrollBarVisibility="Auto" />
 
-            <Button Margin="4"
-                    Click="SpinButton_Click"
-                    Content="Spin" />
+                <Button Margin="4"
+                        Click="SpinButton_Click"
+                        Content="Spin" />
 
-            <ItemsControl x:Name="SlicesList" Margin="4">
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Margin="2" Orientation="Horizontal">
-                            <Rectangle Width="16"
-                                       Height="16"
-                                       Margin="2"
-                                       Fill="{Binding Fill}"
-                                       Stroke="Black"
-                                       StrokeThickness="0.5" />
-                            <TextBlock Margin="6,0,0,0"
-                                       VerticalAlignment="Center"
-                                       Text="{Binding Label}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </StackPanel>
-    </Grid>
+                <ItemsControl x:Name="SlicesList" Margin="4">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Margin="2" Orientation="Horizontal">
+                                <Rectangle Width="16"
+                                           Height="16"
+                                           Margin="2"
+                                           Fill="{Binding Fill}"
+                                           Stroke="Black"
+                                           StrokeThickness="0.5" />
+                                <TextBlock Margin="6,0,0,0"
+                                           VerticalAlignment="Center"
+                                           Text="{Binding Label}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
+        </Grid>
+    </materialDesign:DialogHost>
 </Window>

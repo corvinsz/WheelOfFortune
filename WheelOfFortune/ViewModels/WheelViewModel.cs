@@ -1,5 +1,8 @@
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using MaterialDesignThemes.Wpf;
 using System.Collections.ObjectModel;
+using System.Windows;
 using System.Windows.Media;
 using WheelOfFortune.Models;
 
@@ -10,7 +13,7 @@ public partial class WheelViewModel : ObservableObject
 	public ObservableCollection<WheelSlice> Slices { get; } = [];
 
 	[ObservableProperty]
-	private string sliceText = string.Empty;
+	private string _sliceText = string.Empty;
 
 	private readonly Brush[] _palette =
 	[
@@ -51,5 +54,22 @@ public partial class WheelViewModel : ObservableObject
 			Slices.Add(slice);
 			i++;
 		}
+	}
+
+	[RelayCommand]
+	private async Task ImportFromClipboard()
+	{
+		if (Slices.Count > 0)
+		{
+			var dialog = new Dialogs.MessageBoxDialog("Overwrite Slices?", "Importing from clipboard will overwrite your current slices. Do you want to continue?", System.Windows.MessageBoxButton.YesNo);
+			MessageBoxResult? shouldImport = (MessageBoxResult?)await DialogHost.Show(dialog);
+
+			if (shouldImport != MessageBoxResult.Yes)
+			{
+				return;
+			}
+		}
+
+		SliceText = Clipboard.GetText();
 	}
 }

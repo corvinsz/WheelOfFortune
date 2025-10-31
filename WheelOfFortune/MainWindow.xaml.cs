@@ -25,17 +25,11 @@ public partial class MainWindow : Window
 		InitializeComponent();
 		DataContext = _vm;
 		SlicesList.ItemsSource = _vm.Slices;
-		SlicesTextBox.TextChanged += SlicesTextBox_TextChanged;
 
 		if (_vm.Slices is INotifyCollectionChanged obs)
 		{
 			obs.CollectionChanged += Slices_CollectionChanged;
 		}
-	}
-
-	private void SlicesTextBox_TextChanged(object? sender, TextChangedEventArgs e)
-	{
-		_vm.SliceText = SlicesTextBox.Text;
 	}
 
 	private void Slices_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
