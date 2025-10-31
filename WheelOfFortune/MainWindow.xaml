@@ -10,7 +10,7 @@
         Height="600"
         Style="{StaticResource MaterialDesignWindow}"
         mc:Ignorable="d">
-    <materialDesign:DialogHost DialogContentUniformCornerRadius="16">
+    <materialDesign:DialogHost DialogContentUniformCornerRadius="16" Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
         <Grid Margin="12">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="3*" />
@@ -32,18 +32,27 @@
             <StackPanel Grid.Column="1"
                         Margin="8"
                         Orientation="Vertical">
-                <StackPanel Orientation="Horizontal">
-                    <Border BorderThickness="1">
+                <Border HorizontalAlignment="Left"
+                        BorderBrush="{DynamicResource MaterialDesign.Brush.Primary}"
+                        BorderThickness="1"
+                        CornerRadius="5">
+                    <StackPanel Orientation="Horizontal">
                         <Button Command="{Binding ImportFromClipboardCommand}"
                                 Content="{materialDesign:PackIcon Kind=ClipboardArrowDownOutline}"
+                                Style="{StaticResource MaterialDesignFlatButton}"
                                 ToolTip="Import from clipboard" />
-                    </Border>
-                </StackPanel>
+                        <Button Command="{Binding ShuffleSilcesCommand}"
+                                Content="{materialDesign:PackIcon Kind=Shuffle}"
+                                Style="{StaticResource MaterialDesignFlatButton}"
+                                ToolTip="Shuffle items" />
+                    </StackPanel>
+                </Border>
                 <TextBox Height="300"
-                         Margin="4"
+                         Margin="4,8,4,4"
                          VerticalContentAlignment="Top"
                          materialDesign:HintAssist.Hint="Enter one slice per line"
                          AcceptsReturn="True"
+                         FontSize="16"
                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
                          Text="{Binding SliceText, UpdateSourceTrigger=PropertyChanged, Delay=100}"
                          VerticalScrollBarVisibility="Auto" />

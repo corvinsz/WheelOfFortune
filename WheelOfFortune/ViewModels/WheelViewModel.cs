@@ -72,4 +72,10 @@ public partial class WheelViewModel : ObservableObject
 
 		SliceText = Clipboard.GetText();
 	}
+
+	[RelayCommand]
+	private void ShuffleSilces()
+	{
+		// TODO: implement
+	}
 }
