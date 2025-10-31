@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WheelOfFortune"
+        xmlns:locale="clr-namespace:WheelOfFortune.Localization"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         Title="WheelOfFortune"
@@ -32,6 +33,7 @@
             <StackPanel Grid.Column="1"
                         Margin="8"
                         Orientation="Vertical">
+                <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}" />
                 <Border HorizontalAlignment="Left"
                         BorderBrush="{DynamicResource MaterialDesign.Brush.Primary}"
                         BorderThickness="1"
@@ -40,17 +42,17 @@
                         <Button Command="{Binding ImportFromClipboardCommand}"
                                 Content="{materialDesign:PackIcon Kind=ClipboardArrowDownOutline}"
                                 Style="{StaticResource MaterialDesignFlatButton}"
-                                ToolTip="Import from clipboard" />
+                                ToolTip="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_ImportFromClipboardButton_ToolTip]}" />
                         <Button Command="{Binding ShuffleSilcesCommand}"
                                 Content="{materialDesign:PackIcon Kind=Shuffle}"
                                 Style="{StaticResource MaterialDesignFlatButton}"
-                                ToolTip="Shuffle items" />
+                                ToolTip="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_ShuffleItemsButton_ToolTip]}" />
                     </StackPanel>
                 </Border>
                 <TextBox Height="300"
                          Margin="4,8,4,4"
                          VerticalContentAlignment="Top"
-                         materialDesign:HintAssist.Hint="Enter one slice per line"
+                         materialDesign:HintAssist.Hint="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SlicesTextBox_Hint]}"
                          AcceptsReturn="True"
                          FontSize="16"
                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
@@ -59,7 +61,7 @@
 
                 <Button Margin="4"
                         Click="SpinButton_Click"
-                        Content="Spin" />
+                        Content="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SpinButton_Content]}" />
 
                 <ItemsControl x:Name="SlicesList" Margin="4">
                     <ItemsControl.ItemTemplate>

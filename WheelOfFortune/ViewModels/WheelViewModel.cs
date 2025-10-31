@@ -10,6 +10,25 @@ namespace WheelOfFortune.ViewModels;
 
 public partial class WheelViewModel : ObservableObject
 {
+	public WheelViewModel()
+	{
+		SelectedLanguage = Languages.First();
+	}
+
+	public List<string> Languages { get; } =
+	[
+		"en",
+		"de",
+	];
+
+	[ObservableProperty]
+	private string _selectedLanguage;
+
+	partial void OnSelectedLanguageChanged(string value)
+	{
+		Localization.LocalizationManager.Instance.CurrentCulture = new System.Globalization.CultureInfo(value);
+	}
+
 	public ObservableCollection<WheelSlice> Slices { get; } = [];
 
 	[ObservableProperty]
@@ -61,7 +80,9 @@ public partial class WheelViewModel : ObservableObject
 	{
 		if (Slices.Count > 0)
 		{
-			var dialog = new Dialogs.MessageBoxDialog("Overwrite Slices?", "Importing from clipboard will overwrite your current slices. Do you want to continue?", System.Windows.MessageBoxButton.YesNo);
+			var dialog = new Dialogs.MessageBoxDialog(Localization.LocalizationManager.Instance["OverwriteSlicesDialog_HeaderTextBlock_Text"],
+													  Localization.LocalizationManager.Instance["OverwriteSlicesDialog_ContentTextBlock_Text"],
+													  System.Windows.MessageBoxButton.YesNo);
 			MessageBoxResult? shouldImport = (MessageBoxResult?)await DialogHost.Show(dialog);
 
 			if (shouldImport != MessageBoxResult.Yes)

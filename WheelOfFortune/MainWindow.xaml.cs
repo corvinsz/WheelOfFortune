@@ -215,7 +215,9 @@ public partial class MainWindow : Window
 			// show result
 			var slice = _vm.Slices[selectedIndex];
 
-			var dialog = new Dialogs.MessageBoxDialog("Wheel result", slice.Label, System.Windows.MessageBoxButton.OK);
+			var dialog = new Dialogs.MessageBoxDialog(Localization.LocalizationManager.Instance["ResultDialog_HeaderTextBlock_Text"],
+				                                      slice.Label,
+													  System.Windows.MessageBoxButton.OK);
 			await DialogHost.Show(dialog);
 		};
 
