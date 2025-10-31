@@ -4,8 +4,8 @@ using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using WheelOfFortune.Models;
 
-namespace WheelOfFortune.ViewModels
-{
+namespace WheelOfFortune.ViewModels;
+
     public class WheelViewModel : INotifyPropertyChanged
     {
         public ObservableCollection<WheelSlice> Slices { get; } = new ObservableCollection<WheelSlice>();
@@ -62,4 +62,3 @@ namespace WheelOfFortune.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
-}

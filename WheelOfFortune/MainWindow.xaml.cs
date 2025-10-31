@@ -8,8 +8,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using WheelOfFortune.ViewModels;
 
-namespace WheelOfFortune
-{
+namespace WheelOfFortune;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -50,7 +50,7 @@ namespace WheelOfFortune
             DrawWheel();
         }
 
-		private void WheelCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
+	private void WheelCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             DrawWheel();
         }
@@ -132,8 +132,8 @@ namespace WheelOfFortune
                 Stroke = Brushes.Black,
                 StrokeThickness = 1,
                 Points =
-				[
-					new Point(centerX - 10, centerY - radius - 4),
+			[
+				new Point(centerX - 10, centerY - radius - 4),
                     new Point(centerX + 10, centerY - radius - 4),
                     new Point(centerX, centerY - radius + 10)
                 ]
@@ -238,4 +238,3 @@ namespace WheelOfFortune
             _wheelRotateTransform?.BeginAnimation(RotateTransform.AngleProperty, animation);
         }
     }
-}
