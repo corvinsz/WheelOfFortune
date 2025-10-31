@@ -1,4 +1,5 @@
-﻿using System.Collections.Specialized;
+﻿using MaterialDesignThemes.Wpf;
+using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -201,7 +202,7 @@ public partial class MainWindow : Window
 			EasingFunction = new CircleEase { EasingMode = EasingMode.EaseOut }
 		};
 
-		animation.Completed += (s, a) =>
+		animation.Completed += async (s, a) =>
 		{
 			_currentAngle = NormalizeAngle(to);
 			if (_wheelRotateTransform is not null)
@@ -213,7 +214,9 @@ public partial class MainWindow : Window
 
 			// show result
 			var slice = _vm.Slices[selectedIndex];
-			MessageBox.Show($"Result: {slice.Label}", "Wheel Result", MessageBoxButton.OK, MessageBoxImage.Information);
+
+			var dialog = new Dialogs.MessageBoxDialog("Wheel result", slice.Label, System.Windows.MessageBoxButton.OK);
+			await DialogHost.Show(dialog);
 		};
 
 		// disable the button while spinning
