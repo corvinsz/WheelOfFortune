@@ -130,10 +130,10 @@ public partial class MainWindow : Window
 			Stroke = Brushes.Black,
 			StrokeThickness = 1,
 			Points =
-		[
-			new Point(centerX - 10, centerY - radius - 4),
-					new Point(centerX + 10, centerY - radius - 4),
-					new Point(centerX, centerY - radius + 10)
+			[
+				new Point(centerX - 10, centerY - radius - 4),
+				new Point(centerX + 10, centerY - radius - 4),
+				new Point(centerX, centerY - radius + 10)
 			]
 		};
 		WheelCanvas.Children.Add(pointer);
@@ -182,14 +182,13 @@ public partial class MainWindow : Window
 		if (_isSpinning) return;
 		if (_vm.Slices.Count == 0) return;
 
-		if (_wheelLayer == null || _wheelRotateTransform == null)
+		if (_wheelLayer is null || _wheelRotateTransform is null)
 		{
 			DrawWheel();
 		}
 
 		// pick a random slice to land on
-		Random rnd = new();
-		int selectedIndex = rnd.Next(0, _vm.Slices.Count);
+		int selectedIndex = Random.Shared.Next(0, _vm.Slices.Count);
 
 		// compute target delta so that the selected slice mid-angle aligns with the pointer at -90
 		double anglePer = 360.0 / _vm.Slices.Count;
@@ -197,7 +196,7 @@ public partial class MainWindow : Window
 		double targetDelta = NormalizeAngle(-90 - midAngle); // amount to rotate to bring midAngle to -90
 
 		// pick random full rotations
-		int fullRotations = rnd.Next(3, 7);
+		int fullRotations = Random.Shared.Next(3, 7);
 		double totalRotation = fullRotations * 360.0 + targetDelta;
 
 		double from = _currentAngle;
