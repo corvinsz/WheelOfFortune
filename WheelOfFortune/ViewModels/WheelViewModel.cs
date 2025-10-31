@@ -1,47 +1,45 @@
+using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows.Media;
 using WheelOfFortune.Models;
 
 namespace WheelOfFortune.ViewModels;
 
-public class WheelViewModel : INotifyPropertyChanged
+public partial class WheelViewModel : ObservableObject
 {
-	public ObservableCollection<WheelSlice> Slices { get; } = new ObservableCollection<WheelSlice>();
+	public ObservableCollection<WheelSlice> Slices { get; } = [];
 
-	private string _sliceText = string.Empty;
-	public string SliceText
+	[ObservableProperty]
+	private string sliceText = string.Empty;
+
+	private readonly Brush[] _palette =
+	[
+		Brushes.Coral,
+		Brushes.MediumSeaGreen,
+		Brushes.SteelBlue,
+		Brushes.Goldenrod,
+		Brushes.MediumPurple,
+		Brushes.Tomato,
+		Brushes.Teal,
+		Brushes.Plum,
+		Brushes.SandyBrown,
+		Brushes.OliveDrab
+	];
+
+	partial void OnSliceTextChanged(string value)
 	{
-		get => _sliceText;
-		set
-		{
-			if (_sliceText == value) return;
-			_sliceText = value;
-			OnPropertyChanged();
-			UpdateSlicesFromText();
-		}
+		UpdateSlicesFromText();
 	}
-
-	private readonly Brush[] _palette = new Brush[]
-	{
-			Brushes.Coral,
-			Brushes.MediumSeaGreen,
-			Brushes.SteelBlue,
-			Brushes.Goldenrod,
-			Brushes.MediumPurple,
-			Brushes.Tomato,
-			Brushes.Teal,
-			Brushes.Plum,
-			Brushes.SandyBrown,
-			Brushes.OliveDrab
-	};
 
 	private void UpdateSlicesFromText()
 	{
 		Slices.Clear();
-		if (string.IsNullOrWhiteSpace(SliceText)) return;
-		var lines = SliceText.Split(new[] { '\r', '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+		if (string.IsNullOrWhiteSpace(SliceText))
+		{
+			return;
+		}
+
+		var lines = SliceText.Split(['\r', '\n'], System.StringSplitOptions.RemoveEmptyEntries);
 		int i = 0;
 		foreach (var line in lines)
 		{
@@ -53,12 +51,5 @@ public class WheelViewModel : INotifyPropertyChanged
 			Slices.Add(slice);
 			i++;
 		}
-		OnPropertyChanged(nameof(Slices));
-	}
-
-	public event PropertyChangedEventHandler? PropertyChanged;
-	private void OnPropertyChanged([CallerMemberName] string? name = null)
-	{
-		PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 	}
 }
