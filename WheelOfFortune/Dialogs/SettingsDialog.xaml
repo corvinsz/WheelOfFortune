@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:WheelOfFortune.Dialogs"
+             xmlns:locale="clr-namespace:WheelOfFortune.Localization"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:s="clr-namespace:System;assembly=mscorlib"
@@ -28,7 +29,7 @@
                                      Kind="Cog" />
             <TextBlock Margin="8,0,0,0"
                        Style="{StaticResource MaterialDesignHeadline3TextBlock}"
-                       Text="Settings" />
+                       Text="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SettingsButton_Content]}" />
         </StackPanel>
 
         <Separator Grid.Row="1"
@@ -45,7 +46,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBlock Grid.Column="0"
                                VerticalAlignment="Center"
-                               FontSize="24"
+                               Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                                Text="Theme" />
 
                     <ListBox Grid.Column="1"
@@ -68,7 +69,7 @@
                                DockPanel.Dock="Right"
                                Text="{Binding VelopackUpdater.CurrentAppVersion}" />
                     <TextBlock DockPanel.Dock="Right"
-                               FontSize="24"
+                               Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                                Text="Current version" />
                 </DockPanel>
 
@@ -86,7 +87,7 @@
                     <TextBlock Grid.Row="0"
                                Grid.Column="0"
                                Grid.ColumnSpan="2"
-                               FontSize="24"
+                               Style="{StaticResource MaterialDesignHeadline5TextBlock}"
                                Text="Download new version" />
 
                     <TextBlock Grid.Row="1"
@@ -109,6 +110,27 @@
 
                     </StackPanel>
                 </Grid>
+
+                <Separator DockPanel.Dock="Top" Opacity="0.3" />
+
+                <DockPanel DockPanel.Dock="Top">
+                    <ListBox DockPanel.Dock="Bottom"
+                             ItemsSource="{Binding Languages}"
+                             SelectedItem="{Binding SelectedLanguage}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel>
+                                    <Image Source="{Binding ImagePath}" />
+                                    <TextBlock Text="{Binding FriendlyName}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <TextBlock DockPanel.Dock="Top"
+                               Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                               Text="Language" />
+                </DockPanel>
+
             </DockPanel>
         </ScrollViewer>
 

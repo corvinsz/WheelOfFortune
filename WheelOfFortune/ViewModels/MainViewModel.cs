@@ -16,23 +16,8 @@ public partial class MainViewModel : ObservableObject
 	public ISnackbarMessageQueue SnackbarMessageQueue { get; }
 	public MainViewModel(IDialogService dialogService, ISnackbarMessageQueue snackbarMessageQueue)
 	{
-		SelectedLanguage = Languages.First();
 		_dialogService = dialogService;
 		SnackbarMessageQueue = snackbarMessageQueue;
-	}
-
-	public List<string> Languages { get; } =
-	[
-		"en",
-		"de",
-	];
-
-	[ObservableProperty]
-	private string _selectedLanguage;
-
-	partial void OnSelectedLanguageChanged(string value)
-	{
-		Localization.LocalizationManager.Instance.CurrentCulture = new System.Globalization.CultureInfo(value);
 	}
 
 	public ObservableCollection<HistoryEntry> History { get; } = [];
