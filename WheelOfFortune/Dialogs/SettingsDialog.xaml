@@ -70,7 +70,7 @@
                                Text="{Binding VelopackUpdater.CurrentAppVersion}" />
                     <TextBlock DockPanel.Dock="Right"
                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                               Text="Current version" />
+                               Text="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[SettingsDialog_InstalledVersionTextBlock_Content]}" />
                 </DockPanel>
 
                 <Separator DockPanel.Dock="Top" Opacity="0.3" />
@@ -88,11 +88,12 @@
                                Grid.Column="0"
                                Grid.ColumnSpan="2"
                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                               Text="Download new version" />
+                               Text="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[SettingsDialog_DownloadNewVersionTextBlock_Content]}" />
 
                     <TextBlock Grid.Row="1"
                                Grid.Column="0"
-                               Text="Check for a new version. If available, it will download, and you can restart the app to apply the changes."
+                               Width="500"
+                               Text="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[SettingsDialog_DownloadNewVersionTextBlock_SupportingText]}"
                                TextWrapping="Wrap" />
 
                     <StackPanel Grid.Row="1"
@@ -101,11 +102,11 @@
                                 Orientation="Horizontal">
                         <Button Command="{Binding VelopackUpdater.CheckForUpdateCommand}"
                                 CommandParameter="{StaticResource TrueValue}"
-                                Content="Check for updates" />
+                                Content="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[SettingsDialog_CheckForUpdatesButton_Content]}" />
                         <Button Margin="4,0,0,0"
                                 Command="{Binding VelopackUpdater.ApplyUpdateAndRestartCommand}"
                                 CommandParameter="{StaticResource TrueValue}"
-                                Content="Install update"
+                                Content="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[SettingsDialog_InstallUpdateButton_Content]}"
                                 IsEnabled="{Binding VelopackUpdater.IsUpdateAvailable}" />
 
                     </StackPanel>
@@ -128,7 +129,7 @@
                     </ListBox>
                     <TextBlock DockPanel.Dock="Top"
                                Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                               Text="Language" />
+                               Text="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[SettingsDialog_LanguageTextBlock_Content]}" />
                 </DockPanel>
 
             </DockPanel>
@@ -138,7 +139,7 @@
                 Margin="0,8,16,0"
                 HorizontalAlignment="Right"
                 Command="{x:Static materialDesign:DialogHost.CloseDialogCommand}"
-                Content="Close"
+                Content="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[Close]}"
                 Style="{StaticResource MaterialDesignFlatButton}" />
 
     </Grid>

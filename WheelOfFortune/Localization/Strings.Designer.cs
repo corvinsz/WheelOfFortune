@@ -61,6 +61,15 @@ namespace WheelOfFortune.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Close.
+        /// </summary>
+        public static string Close {
+            get {
+                return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Entries.
         /// </summary>
         public static string MainWindow_EntriesTabItem_HeaderText {
@@ -165,6 +174,60 @@ namespace WheelOfFortune.Localization {
         public static string ResultDialog_HeaderTextBlock_Text {
             get {
                 return ResourceManager.GetString("ResultDialog_HeaderTextBlock_Text", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for updates.
+        /// </summary>
+        public static string SettingsDialog_CheckForUpdatesButton_Content {
+            get {
+                return ResourceManager.GetString("SettingsDialog_CheckForUpdatesButton_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Download new version.
+        /// </summary>
+        public static string SettingsDialog_DownloadNewVersionTextBlock_Content {
+            get {
+                return ResourceManager.GetString("SettingsDialog_DownloadNewVersionTextBlock_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Check for a new version. If available, it will download, and you can restart the app to apply the changes..
+        /// </summary>
+        public static string SettingsDialog_DownloadNewVersionTextBlock_SupportingText {
+            get {
+                return ResourceManager.GetString("SettingsDialog_DownloadNewVersionTextBlock_SupportingText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Installed version.
+        /// </summary>
+        public static string SettingsDialog_InstalledVersionTextBlock_Content {
+            get {
+                return ResourceManager.GetString("SettingsDialog_InstalledVersionTextBlock_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install update.
+        /// </summary>
+        public static string SettingsDialog_InstallUpdateButton_Content {
+            get {
+                return ResourceManager.GetString("SettingsDialog_InstallUpdateButton_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Language.
+        /// </summary>
+        public static string SettingsDialog_LanguageTextBlock_Content {
+            get {
+                return ResourceManager.GetString("SettingsDialog_LanguageTextBlock_Content", resourceCulture);
             }
         }
     }

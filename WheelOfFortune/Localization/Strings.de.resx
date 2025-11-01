@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Close" xml:space="preserve">
+    <value>Schließen</value>
+  </data>
   <data name="MainWindow_EntriesTabItem_HeaderText" xml:space="preserve">
     <value>Einträge</value>
   </data>
@@ -152,5 +155,23 @@
   </data>
   <data name="ResultDialog_HeaderTextBlock_Text" xml:space="preserve">
     <value>Ergebnis</value>
+  </data>
+  <data name="SettingsDialog_CheckForUpdatesButton_Content" xml:space="preserve">
+    <value>Nach Update suchen</value>
+  </data>
+  <data name="SettingsDialog_DownloadNewVersionTextBlock_Content" xml:space="preserve">
+    <value>Neue Version herunterladen</value>
+  </data>
+  <data name="SettingsDialog_DownloadNewVersionTextBlock_SupportingText" xml:space="preserve">
+    <value>Prüfen Sie, ob eine neue Version verfügbar ist. Falls ja, wird sie heruntergeladen, und Sie können die App neu starten, um die Änderungen anzuwenden.</value>
+  </data>
+  <data name="SettingsDialog_InstalledVersionTextBlock_Content" xml:space="preserve">
+    <value>Installierte Version</value>
+  </data>
+  <data name="SettingsDialog_InstallUpdateButton_Content" xml:space="preserve">
+    <value>Update installieren</value>
+  </data>
+  <data name="SettingsDialog_LanguageTextBlock_Content" xml:space="preserve">
+    <value>Sprache</value>
   </data>
 </root>
