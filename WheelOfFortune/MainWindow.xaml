@@ -54,8 +54,8 @@
                             Style="{StaticResource MaterialDesignFilledTabControl}">
                     <TabItem Header="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_EntriesTabItem_HeaderText]}">
                         <StackPanel Orientation="Vertical">
-                            <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}" />
-                            <Border HorizontalAlignment="Left"
+                            <Border Margin="0,4"
+                                    HorizontalAlignment="Left"
                                     BorderBrush="{DynamicResource MaterialDesign.Brush.Primary}"
                                     BorderThickness="1"
                                     CornerRadius="5">
@@ -71,7 +71,7 @@
                                 </StackPanel>
                             </Border>
                             <TextBox Height="300"
-                                     Margin="4,8,4,4"
+                                     Margin="0,8,0,0"
                                      VerticalContentAlignment="Top"
                                      materialDesign:HintAssist.Hint="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SlicesTextBox_Hint]}"
                                      AcceptsReturn="True"
@@ -80,7 +80,8 @@
                                      Text="{Binding SliceText, UpdateSourceTrigger=PropertyChanged, Delay=100}"
                                      VerticalScrollBarVisibility="Auto" />
 
-                            <Button Margin="4"
+                            <Button Margin="0,4"
+                                    materialDesign:ButtonAssist.CornerRadius="16"
                                     Click="SpinButton_Click"
                                     Content="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SpinButton_Content]}" />
 

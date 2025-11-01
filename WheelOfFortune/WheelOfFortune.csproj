@@ -20,8 +20,16 @@
 
 	<ItemGroup>
 		<ApplicationDefinition Remove="App.xaml" />
+		<None Remove="Assets\Flags\de.png" />
+		<None Remove="Assets\Flags\en.png" />
 		<None Remove="ReleaseNotes\ReleaseNotes.md" />
 		<Content Include="Resources\AppIcon.ico" />
+		<Resource Include="Assets\Flags\de.png">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
+		<Resource Include="Assets\Flags\en.png">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Resource>
 		<Page Include="App.xaml" />
 	</ItemGroup>
 

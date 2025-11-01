@@ -120,9 +120,11 @@
                              SelectedItem="{Binding SelectedLanguage}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
-                                <StackPanel>
-                                    <Image Source="{Binding ImagePath}" />
-                                    <TextBlock Text="{Binding FriendlyName}" />
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Width="32" Source="{Binding ImagePath}" />
+                                    <TextBlock Margin="8,0,0,0"
+                                               VerticalAlignment="Center"
+                                               Text="{Binding FriendlyName}" />
                                 </StackPanel>
                             </DataTemplate>
                         </ListBox.ItemTemplate>

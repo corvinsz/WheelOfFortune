@@ -12,8 +12,8 @@ public partial class SettingsViewModel : ObservableObject
 	private readonly IThemeService _themeService;
 	public List<Language> Languages { get; } =
 	[
-		new Language("English", "en", "/Assets/Flags/uk.png"),
-		new Language("Deutsch", "de", "/Assets/Flags/de.png"),
+		new Language("English", "en", "pack://application:,,,/Assets/Flags/en.png"),
+		new Language("Deutsch", "de", "pack://application:,,,/Assets/Flags/de.png"),
 	];
 
 	public SettingsViewModel(ISnackbarMessageQueue snackbarMessageService,
