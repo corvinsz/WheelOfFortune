@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using WheelOfFortune.Models;
 using WheelOfFortune.ViewModels;
 
 namespace WheelOfFortune;
@@ -182,22 +183,33 @@ public partial class MainWindow : Window
 			DrawWheel();
 		}
 
-		// pick a random slice to land on
+		// reset starting position
+		_currentAngle = 0;
+		_wheelRotateTransform!.Angle = 0;
+
+		// pick a random slice
 		int selectedIndex = Random.Shared.Next(0, _vm.Slices.Count);
-
-		// compute target delta so that the selected slice mid-angle aligns with the pointer at -90
 		double anglePer = 360.0 / _vm.Slices.Count;
-		double midAngle = -90 + (selectedIndex + 0.5) * anglePer; // current mid angle for slice
-		double targetDelta = NormalizeAngle(-90 - midAngle); // amount to rotate to bring midAngle to -90
 
-		// pick random full rotations
+		// random offset within the slice (-0.4 .. +0.4 slice width)
+		double offsetAngle = (Random.Shared.NextDouble() - 0.5) * anglePer * 0.99d;
+
+		// compute mid-angle including offset
+		double midAngle = -90 + (selectedIndex + 0.5) * anglePer + offsetAngle;
+
+		// rotate so that final pointer aligns with this angle
+		double targetDelta = NormalizeAngle(-90 - midAngle);
+
+		// random full rotations
 		int fullRotations = Random.Shared.Next(3, 7);
 		double totalRotation = fullRotations * 360.0 + targetDelta;
 
 		double from = _currentAngle;
 		double to = _currentAngle + totalRotation;
 
-		var animation = new DoubleAnimation(from, to, new Duration(TimeSpan.FromSeconds(4 + Random.Shared.NextDouble() * 1.5)))
+		// spin animation
+		var animation = new DoubleAnimation(from, to,
+			new Duration(TimeSpan.FromMilliseconds(4000 + Random.Shared.NextDouble() * 1500)))
 		{
 			EasingFunction = new CircleEase { EasingMode = EasingMode.EaseOut }
 		};
@@ -214,9 +226,10 @@ public partial class MainWindow : Window
 
 			// show result
 			var slice = _vm.Slices[selectedIndex];
+			_vm.History.Add(new HistoryEntry(slice.Label));
 
 			var dialog = new Dialogs.MessageBoxDialog(Localization.LocalizationManager.Instance["ResultDialog_HeaderTextBlock_Text"],
-				                                      slice.Label,
+													  slice.Label,
 													  System.Windows.MessageBoxButton.OK);
 			await DialogHost.Show(dialog);
 		};

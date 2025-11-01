@@ -19,7 +19,7 @@ namespace WheelOfFortune.Localization {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Strings {
@@ -57,6 +57,42 @@ namespace WheelOfFortune.Localization {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entries.
+        /// </summary>
+        public static string MainWindow_EntriesTabItem_HeaderText {
+            get {
+                return ResourceManager.GetString("MainWindow_EntriesTabItem_HeaderText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Result.
+        /// </summary>
+        public static string MainWindow_HistoryDataGrid_ResultHeader {
+            get {
+                return ResourceManager.GetString("MainWindow_HistoryDataGrid_ResultHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timestamp.
+        /// </summary>
+        public static string MainWindow_HistoryDataGrid_TimestampHeader {
+            get {
+                return ResourceManager.GetString("MainWindow_HistoryDataGrid_TimestampHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to History.
+        /// </summary>
+        public static string MainWindow_HistoryTabItem_HeaderText {
+            get {
+                return ResourceManager.GetString("MainWindow_HistoryTabItem_HeaderText", resourceCulture);
             }
         }
         

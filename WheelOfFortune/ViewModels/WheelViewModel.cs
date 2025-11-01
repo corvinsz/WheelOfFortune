@@ -29,6 +29,7 @@ public partial class WheelViewModel : ObservableObject
 		Localization.LocalizationManager.Instance.CurrentCulture = new System.Globalization.CultureInfo(value);
 	}
 
+	public ObservableCollection<HistoryEntry> History { get; } = [];
 	public ObservableCollection<WheelSlice> Slices { get; } = [];
 
 	[ObservableProperty]

@@ -117,6 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="MainWindow_EntriesTabItem_HeaderText" xml:space="preserve">
+    <value>Entries</value>
+  </data>
+  <data name="MainWindow_HistoryDataGrid_ResultHeader" xml:space="preserve">
+    <value>Result</value>
+  </data>
+  <data name="MainWindow_HistoryDataGrid_TimestampHeader" xml:space="preserve">
+    <value>Timestamp</value>
+  </data>
+  <data name="MainWindow_HistoryTabItem_HeaderText" xml:space="preserve">
+    <value>History</value>
+  </data>
   <data name="MainWindow_ImportFromClipboardButton_ToolTip" xml:space="preserve">
     <value>Import from clipboard</value>
   </data>
