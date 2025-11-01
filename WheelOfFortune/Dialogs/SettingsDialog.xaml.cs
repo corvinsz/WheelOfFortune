@@ -1,4 +1,5 @@
 ﻿using System.Windows.Controls;
+using WheelOfFortune.ViewModels;
 
 namespace WheelOfFortune.Dialogs;
 
@@ -7,8 +8,9 @@ namespace WheelOfFortune.Dialogs;
 /// </summary>
 public partial class SettingsDialog : UserControl
 {
-	public SettingsDialog()
+	public SettingsDialog(SettingsViewModel viewModel)
 	{
+		DataContext = viewModel;
 		InitializeComponent();
 	}
 }

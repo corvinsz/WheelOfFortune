@@ -1,18 +1,24 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using MaterialDesignThemes.Wpf;
+using Microsoft.Extensions.DependencyInjection;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Media;
 using WheelOfFortune.Models;
+using WheelOfFortune.Services;
 
 namespace WheelOfFortune.ViewModels;
 
-public partial class WheelViewModel : ObservableObject
+public partial class MainViewModel : ObservableObject
 {
-	public WheelViewModel()
+	private readonly IDialogService _dialogService;
+	public ISnackbarMessageQueue SnackbarMessageQueue { get; }
+	public MainViewModel(IDialogService dialogService, ISnackbarMessageQueue snackbarMessageQueue)
 	{
 		SelectedLanguage = Languages.First();
+		_dialogService = dialogService;
+		SnackbarMessageQueue = snackbarMessageQueue;
 	}
 
 	public List<string> Languages { get; } =
@@ -48,6 +54,7 @@ public partial class WheelViewModel : ObservableObject
 		Brushes.SandyBrown,
 		Brushes.OliveDrab
 	];
+
 
 	partial void OnSliceTextChanged(string value)
 	{
@@ -99,5 +106,12 @@ public partial class WheelViewModel : ObservableObject
 	private void ShuffleSilces()
 	{
 		// TODO: implement
+	}
+
+	[RelayCommand]
+	private async Task OpenSettings()
+	{
+		var view = App.AppServices.GetRequiredService<Dialogs.SettingsDialog>();
+		await _dialogService.Show(view);
 	}
 }

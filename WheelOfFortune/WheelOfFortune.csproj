@@ -6,13 +6,24 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UseWPF>true</UseWPF>
+		<StartupObject>WheelOfFortune.App</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
     <PackageReference Include="MaterialDesignThemes" Version="5.3.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.10" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.10" />
     <PackageReference Include="Velopack" Version="0.0.1369-g1d5c984" />
   </ItemGroup>
+
+	<ItemGroup>
+		<ApplicationDefinition Remove="App.xaml" />
+		<None Remove="ReleaseNotes\ReleaseNotes.md" />
+		<Content Include="Resources\AppIcon.ico" />
+		<Page Include="App.xaml" />
+	</ItemGroup>
 
   <ItemGroup>
     <Compile Update="Localization\Strings.Designer.cs">

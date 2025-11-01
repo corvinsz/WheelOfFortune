@@ -11,112 +11,115 @@
         Height="600"
         Style="{StaticResource MaterialDesignWindow}"
         mc:Ignorable="d">
-    <materialDesign:DialogHost DialogContentUniformCornerRadius="16" Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
-        <Grid Margin="12">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3*" />
-                <ColumnDefinition Width="2*" />
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
+    <Grid>
+        <materialDesign:DialogHost DialogContentUniformCornerRadius="16" Style="{StaticResource MaterialDesignEmbeddedDialogHost}">
+            <Grid Margin="12">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
 
-            <StackPanel Grid.Row="0"
-                        Grid.Column="0"
-                        Orientation="Horizontal">
-                <Button Command="{Binding OpenSettingsCommand}" Style="{StaticResource MaterialDesignOutlinedButton}">
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Cog" />
-                        <TextBlock Text="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SettingsButton_Content]}" />
-                    </StackPanel>
-                </Button>
-            </StackPanel>
+                <StackPanel Grid.Row="0"
+                            Grid.Column="0"
+                            Orientation="Horizontal">
+                    <Button Command="{Binding OpenSettingsCommand}" Style="{StaticResource MaterialDesignOutlinedButton}">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Cog" />
+                            <TextBlock Text="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SettingsButton_Content]}" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
 
-            <materialDesign:Card Grid.Row="1"
-                                 Grid.Column="0"
-                                 Margin="0,8,8,8"
-                                 Padding="8"
-                                 UniformCornerRadius="16">
-                <Grid>
-                    <Canvas x:Name="WheelCanvas"
-                            Background="Transparent"
-                            Loaded="WheelCanvas_Loaded"
-                            SizeChanged="WheelCanvas_SizeChanged" />
-                </Grid>
-            </materialDesign:Card>
+                <materialDesign:Card Grid.Row="1"
+                                     Grid.Column="0"
+                                     Margin="0,8,8,8"
+                                     Padding="8"
+                                     UniformCornerRadius="16">
+                    <Grid>
+                        <Canvas x:Name="WheelCanvas"
+                                Background="Transparent"
+                                Loaded="WheelCanvas_Loaded"
+                                SizeChanged="WheelCanvas_SizeChanged" />
+                    </Grid>
+                </materialDesign:Card>
 
-            <TabControl Grid.RowSpan="2"
-                        Grid.Column="1"
-                        Margin="8"
-                        HorizontalContentAlignment="Left"
-                        Style="{StaticResource MaterialDesignFilledTabControl}">
-                <TabItem Header="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_EntriesTabItem_HeaderText]}">
-                    <StackPanel Orientation="Vertical">
-                        <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}" />
-                        <Border HorizontalAlignment="Left"
-                                BorderBrush="{DynamicResource MaterialDesign.Brush.Primary}"
-                                BorderThickness="1"
-                                CornerRadius="5">
-                            <StackPanel Orientation="Horizontal">
-                                <Button Command="{Binding ImportFromClipboardCommand}"
-                                        Content="{materialDesign:PackIcon Kind=ClipboardArrowDownOutline}"
-                                        Style="{StaticResource MaterialDesignFlatButton}"
-                                        ToolTip="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_ImportFromClipboardButton_ToolTip]}" />
-                                <Button Command="{Binding ShuffleSilcesCommand}"
-                                        Content="{materialDesign:PackIcon Kind=Shuffle}"
-                                        Style="{StaticResource MaterialDesignFlatButton}"
-                                        ToolTip="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_ShuffleItemsButton_ToolTip]}" />
-                            </StackPanel>
-                        </Border>
-                        <TextBox Height="300"
-                                 Margin="4,8,4,4"
-                                 VerticalContentAlignment="Top"
-                                 materialDesign:HintAssist.Hint="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SlicesTextBox_Hint]}"
-                                 AcceptsReturn="True"
-                                 FontSize="16"
-                                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                 Text="{Binding SliceText, UpdateSourceTrigger=PropertyChanged, Delay=100}"
-                                 VerticalScrollBarVisibility="Auto" />
+                <TabControl Grid.RowSpan="2"
+                            Grid.Column="1"
+                            Margin="8"
+                            HorizontalContentAlignment="Left"
+                            Style="{StaticResource MaterialDesignFilledTabControl}">
+                    <TabItem Header="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_EntriesTabItem_HeaderText]}">
+                        <StackPanel Orientation="Vertical">
+                            <ComboBox ItemsSource="{Binding Languages}" SelectedItem="{Binding SelectedLanguage}" />
+                            <Border HorizontalAlignment="Left"
+                                    BorderBrush="{DynamicResource MaterialDesign.Brush.Primary}"
+                                    BorderThickness="1"
+                                    CornerRadius="5">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Command="{Binding ImportFromClipboardCommand}"
+                                            Content="{materialDesign:PackIcon Kind=ClipboardArrowDownOutline}"
+                                            Style="{StaticResource MaterialDesignFlatButton}"
+                                            ToolTip="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_ImportFromClipboardButton_ToolTip]}" />
+                                    <Button Command="{Binding ShuffleSilcesCommand}"
+                                            Content="{materialDesign:PackIcon Kind=Shuffle}"
+                                            Style="{StaticResource MaterialDesignFlatButton}"
+                                            ToolTip="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_ShuffleItemsButton_ToolTip]}" />
+                                </StackPanel>
+                            </Border>
+                            <TextBox Height="300"
+                                     Margin="4,8,4,4"
+                                     VerticalContentAlignment="Top"
+                                     materialDesign:HintAssist.Hint="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SlicesTextBox_Hint]}"
+                                     AcceptsReturn="True"
+                                     FontSize="16"
+                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                     Text="{Binding SliceText, UpdateSourceTrigger=PropertyChanged, Delay=100}"
+                                     VerticalScrollBarVisibility="Auto" />
 
-                        <Button Margin="4"
-                                Click="SpinButton_Click"
-                                Content="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SpinButton_Content]}" />
+                            <Button Margin="4"
+                                    Click="SpinButton_Click"
+                                    Content="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SpinButton_Content]}" />
 
-                        <ItemsControl x:Name="SlicesList" Margin="4">
-                            <ItemsControl.ItemTemplate>
-                                <DataTemplate>
-                                    <StackPanel Margin="2" Orientation="Horizontal">
-                                        <Rectangle Width="16"
-                                                   Height="16"
-                                                   Margin="2"
-                                                   Fill="{Binding Fill}"
-                                                   Stroke="Black"
-                                                   StrokeThickness="0.5" />
-                                        <TextBlock Margin="6,0,0,0"
-                                                   VerticalAlignment="Center"
-                                                   Text="{Binding Label}" />
-                                    </StackPanel>
-                                </DataTemplate>
-                            </ItemsControl.ItemTemplate>
-                        </ItemsControl>
-                    </StackPanel>
-                </TabItem>
+                            <ItemsControl x:Name="SlicesList" Margin="4">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Margin="2" Orientation="Horizontal">
+                                            <Rectangle Width="16"
+                                                       Height="16"
+                                                       Margin="2"
+                                                       Fill="{Binding Fill}"
+                                                       Stroke="Black"
+                                                       StrokeThickness="0.5" />
+                                            <TextBlock Margin="6,0,0,0"
+                                                       VerticalAlignment="Center"
+                                                       Text="{Binding Label}" />
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                        </StackPanel>
+                    </TabItem>
 
-                <TabItem Header="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_HistoryTabItem_HeaderText]}">
-                    <DataGrid AutoGenerateColumns="False"
-                              CanUserAddRows="False"
-                              CanUserDeleteRows="False"
-                              IsReadOnly="True"
-                              ItemsSource="{Binding History}">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Binding="{Binding Timestamp}" Header="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_HistoryDataGrid_TimestampHeader]}" />
-                            <DataGridTextColumn Binding="{Binding Result}" Header="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_HistoryDataGrid_ResultHeader]}" />
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </TabItem>
+                    <TabItem Header="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_HistoryTabItem_HeaderText]}">
+                        <DataGrid AutoGenerateColumns="False"
+                                  CanUserAddRows="False"
+                                  CanUserDeleteRows="False"
+                                  IsReadOnly="True"
+                                  ItemsSource="{Binding History}">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Binding="{Binding Timestamp}" Header="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_HistoryDataGrid_TimestampHeader]}" />
+                                <DataGridTextColumn Binding="{Binding Result}" Header="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_HistoryDataGrid_ResultHeader]}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </TabItem>
 
-            </TabControl>
-        </Grid>
-    </materialDesign:DialogHost>
+                </TabControl>
+            </Grid>
+        </materialDesign:DialogHost>
+        <materialDesign:Snackbar ActionButtonStyle="{StaticResource MaterialDesignSnackbarActionMidButton}" MessageQueue="{Binding SnackbarMessageQueue}" />
+    </Grid>
 </Window>

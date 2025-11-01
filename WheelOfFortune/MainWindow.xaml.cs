@@ -15,20 +15,20 @@ namespace WheelOfFortune;
 /// </summary>
 public partial class MainWindow : Window
 {
-	private readonly WheelViewModel _vm = new();
+	private readonly MainViewModel _viewModel;
 
 	private Canvas? _wheelLayer;
 	private RotateTransform? _wheelRotateTransform;
 	private double _currentAngle = 0.0;
 	private bool _isSpinning = false;
 
-	public MainWindow()
+	public MainWindow(MainViewModel viewModel)
 	{
 		InitializeComponent();
-		DataContext = _vm;
-		SlicesList.ItemsSource = _vm.Slices;
+		DataContext = _viewModel = viewModel;
+		SlicesList.ItemsSource = _viewModel.Slices;
 
-		if (_vm.Slices is INotifyCollectionChanged obs)
+		if (_viewModel.Slices is INotifyCollectionChanged obs)
 		{
 			obs.CollectionChanged += Slices_CollectionChanged;
 		}
@@ -54,7 +54,7 @@ public partial class MainWindow : Window
 		WheelCanvas.Children.Clear();
 		_wheelLayer = new Canvas();
 
-		var slices = _vm.Slices.ToList();
+		var slices = _viewModel.Slices.ToList();
 		if (slices.Count == 0)
 		{
 			// no slices to draw
@@ -176,7 +176,7 @@ public partial class MainWindow : Window
 	private void SpinButton_Click(object sender, RoutedEventArgs e)
 	{
 		if (_isSpinning) return;
-		if (_vm.Slices.Count == 0) return;
+		if (_viewModel.Slices.Count == 0) return;
 
 		if (_wheelLayer is null || _wheelRotateTransform is null)
 		{
@@ -188,8 +188,8 @@ public partial class MainWindow : Window
 		_wheelRotateTransform!.Angle = 0;
 
 		// pick a random slice
-		int selectedIndex = Random.Shared.Next(0, _vm.Slices.Count);
-		double anglePer = 360.0 / _vm.Slices.Count;
+		int selectedIndex = Random.Shared.Next(0, _viewModel.Slices.Count);
+		double anglePer = 360.0 / _viewModel.Slices.Count;
 
 		// random offset within the slice (-0.4 .. +0.4 slice width)
 		double offsetAngle = (Random.Shared.NextDouble() - 0.5) * anglePer * 0.99d;
@@ -225,8 +225,8 @@ public partial class MainWindow : Window
 			_isSpinning = false;
 
 			// show result
-			var slice = _vm.Slices[selectedIndex];
-			_vm.History.Add(new HistoryEntry(slice.Label));
+			var slice = _viewModel.Slices[selectedIndex];
+			_viewModel.History.Add(new HistoryEntry(slice.Label));
 
 			var dialog = new Dialogs.MessageBoxDialog(Localization.LocalizationManager.Instance["ResultDialog_HeaderTextBlock_Text"],
 													  slice.Label,
