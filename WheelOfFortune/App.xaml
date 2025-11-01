@@ -21,6 +21,10 @@
                 <Setter Property="Background" Value="{DynamicResource MaterialDesign.Brush.Card.Background}" />
             </Style>
 
+            <Style BasedOn="{StaticResource {x:Type Separator}}" TargetType="Separator">
+                <Setter Property="Margin" Value="0,8,0,8" />
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>
