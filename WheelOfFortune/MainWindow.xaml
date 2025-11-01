@@ -17,9 +17,25 @@
                 <ColumnDefinition Width="3*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
 
-            <materialDesign:Card Grid.Column="0"
-                                 Margin="8"
+            <StackPanel Grid.Row="0"
+                        Grid.Column="0"
+                        Orientation="Horizontal">
+                <Button Command="{Binding OpenSettingsCommand}" Style="{StaticResource MaterialDesignOutlinedButton}">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Cog" />
+                        <TextBlock Text="{Binding Source={x:Static locale:LocalizationManager.Instance}, Path=[MainWindow_SettingsButton_Content]}" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+
+            <materialDesign:Card Grid.Row="1"
+                                 Grid.Column="0"
+                                 Margin="0,8,8,8"
                                  Padding="8"
                                  UniformCornerRadius="16">
                 <Grid>
@@ -30,7 +46,8 @@
                 </Grid>
             </materialDesign:Card>
 
-            <TabControl Grid.Column="1"
+            <TabControl Grid.RowSpan="2"
+                        Grid.Column="1"
                         Margin="8"
                         HorizontalContentAlignment="Left"
                         Style="{StaticResource MaterialDesignFilledTabControl}">

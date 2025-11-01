@@ -132,6 +132,9 @@
   <data name="MainWindow_ImportFromClipboardButton_ToolTip" xml:space="preserve">
     <value>Import from clipboard</value>
   </data>
+  <data name="MainWindow_SettingsButton_Content" xml:space="preserve">
+    <value>Settings</value>
+  </data>
   <data name="MainWindow_ShuffleItemsButton_ToolTip" xml:space="preserve">
     <value>Shuffle items</value>
   </data>

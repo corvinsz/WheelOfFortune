@@ -106,6 +106,15 @@ namespace WheelOfFortune.Localization {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Settings.
+        /// </summary>
+        public static string MainWindow_SettingsButton_Content {
+            get {
+                return ResourceManager.GetString("MainWindow_SettingsButton_Content", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Shuffle items.
         /// </summary>
         public static string MainWindow_ShuffleItemsButton_ToolTip {
