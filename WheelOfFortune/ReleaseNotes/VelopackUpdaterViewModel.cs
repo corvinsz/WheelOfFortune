@@ -26,6 +26,7 @@ public partial class VelopackUpdaterViewModel : ObservableObject
 	}
 
 	public bool IsUpdateAvailable => _update is not null;
+	public bool IsInstalled => _um.IsInstalled;
 
 	[ObservableProperty]
 	private int _downloadProgress = 0;
@@ -36,7 +37,7 @@ public partial class VelopackUpdaterViewModel : ObservableObject
 	[RelayCommand]
 	private async Task CheckForUpdate(bool showMessages)
 	{
-		if (!_um.IsInstalled)
+		if (!IsInstalled)
 		{
 			if (showMessages)
 			{
