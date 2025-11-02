@@ -6,6 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 using WheelOfFortune.Models;
+using WheelOfFortune.ReleaseNotes;
 using WheelOfFortune.ViewModels;
 
 namespace WheelOfFortune;
@@ -22,7 +23,7 @@ public partial class MainWindow : Window
 	private double _currentAngle = 0.0;
 	private bool _isSpinning = false;
 
-	public MainWindow(MainViewModel viewModel)
+	public MainWindow(MainViewModel viewModel, VelopackUpdaterViewModel velopackUpdater)
 	{
 		InitializeComponent();
 		DataContext = _viewModel = viewModel;
@@ -32,6 +33,25 @@ public partial class MainWindow : Window
 		{
 			obs.CollectionChanged += Slices_CollectionChanged;
 		}
+
+		SetWindowTitle(velopackUpdater);
+	}
+
+	private void SetWindowTitle(VelopackUpdaterViewModel velopackUpdater)
+	{
+#if DEBUG
+		string baseTitle = $"[DEBUG] Wheel of fortune";
+#else
+		string baseTitle = $"Wheel of fortune";
+#endif
+
+		if (velopackUpdater.IsInstalled && velopackUpdater.CurrentAppVersion is string currentVersion)
+		{
+			Title = $"{baseTitle} - v{currentVersion}";
+			return;
+		}
+
+		Title = baseTitle;
 	}
 
 	private void Slices_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)

@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using System.Windows;
 using System.Windows.Threading;
 using Velopack;
+using Velopack.Sources;
 
 namespace WheelOfFortune;
 
@@ -87,10 +88,10 @@ public partial class App : Application
 				services.AddSingleton<Services.IDialogService, Services.DialogService>();
 				services.AddSingleton<Services.ErrorHandling.IErrorHandler, Services.ErrorHandling.ErrorHandler>();
 
+				services.AddSingleton<ReleaseNotes.VelopackUpdaterViewModel>();
+
 				services.AddSingleton<MainWindow>();
 				services.AddSingleton<ViewModels.MainViewModel>();
-
-				services.AddSingleton<ReleaseNotes.VelopackUpdaterViewModel>();
 
 				// register other feature viewmodels / views...
 				services.AddSingleton<ViewModels.SettingsViewModel>();
