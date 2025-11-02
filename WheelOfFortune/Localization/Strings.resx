@@ -174,4 +174,13 @@
   <data name="SettingsDialog_LanguageTextBlock_Content" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="Snackbar_AppIsNotInstalled" xml:space="preserve">
+    <value>Unable to check for updates, the app is not installed.</value>
+  </data>
+  <data name="Snackbar_NoUpdatesAvailable" xml:space="preserve">
+    <value>The application is up to date.</value>
+  </data>
+  <data name="Snackbar_UpdateAvailable" xml:space="preserve">
+    <value>Update available:</value>
+  </data>
 </root>

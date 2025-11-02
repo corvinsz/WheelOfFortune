@@ -41,7 +41,7 @@ public partial class VelopackUpdaterViewModel : ObservableObject
 		{
 			if (showMessages)
 			{
-				_snackbarMessageQueue.Enqueue("Unable to check for updates, the app is not installed");
+				_snackbarMessageQueue.Enqueue(Localization.LocalizationManager.Instance["Snackbar_AppIsNotInstalled"]);
 			}
 			return;
 		}
@@ -55,11 +55,12 @@ public partial class VelopackUpdaterViewModel : ObservableObject
 			{
 				if (IsUpdateAvailable)
 				{
-					_snackbarMessageQueue.Enqueue($"Update available: {_update?.TargetFullRelease.Version.ToString()}");
+					string msg = $"{Localization.LocalizationManager.Instance["Snackbar_UpdateAvailable"]}: {_update?.TargetFullRelease.Version}";
+					_snackbarMessageQueue.Enqueue(msg);
 				}
 				else
 				{
-					_snackbarMessageQueue.Enqueue("No updates available");
+					_snackbarMessageQueue.Enqueue(Localization.LocalizationManager.Instance["Snackbar_NoUpdatesAvailable"]);
 				}
 			}
 

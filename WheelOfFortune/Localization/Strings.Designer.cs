@@ -230,5 +230,32 @@ namespace WheelOfFortune.Localization {
                 return ResourceManager.GetString("SettingsDialog_LanguageTextBlock_Content", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to check for updates, the app is not installed..
+        /// </summary>
+        public static string Snackbar_AppIsNotInstalled {
+            get {
+                return ResourceManager.GetString("Snackbar_AppIsNotInstalled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The application is up to date..
+        /// </summary>
+        public static string Snackbar_NoUpdatesAvailable {
+            get {
+                return ResourceManager.GetString("Snackbar_NoUpdatesAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update available:.
+        /// </summary>
+        public static string Snackbar_UpdateAvailable {
+            get {
+                return ResourceManager.GetString("Snackbar_UpdateAvailable", resourceCulture);
+            }
+        }
     }
 }
