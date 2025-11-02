@@ -43,6 +43,30 @@ public partial class App : Application
 		app.InitializeComponent();
 		app.MainWindow = host.Services.GetRequiredService<MainWindow>();
 		app.MainWindow.Visibility = Visibility.Visible;
+
+		// Check for updates automatically on startup
+		_ = Task.Run(async () =>
+		{
+			try
+			{
+				const string repoUrl = "https://github.com/corvinsz/WheelOfFortune";
+				UpdateManager updateManager = new(new GithubSource(repoUrl, "", true));
+				if (updateManager.IsInstalled)
+				{
+					var updateInfo = await updateManager.CheckForUpdatesAsync();
+					if (updateInfo is not null)
+					{
+						await updateManager.DownloadUpdatesAsync(updateInfo);
+						updateManager.ApplyUpdatesAndRestart(updateInfo);
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+				System.Diagnostics.Debug.WriteLine($"Update check failed: {ex.Message}");
+			}
+		});
+
 		app.Run();
 
 		await host.StopAsync().ConfigureAwait(true);
