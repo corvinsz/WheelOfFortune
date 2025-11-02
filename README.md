@@ -2,7 +2,7 @@
 
 A desktop WPF application that displays a configurable wheel of options and allows the user to spin it.
 
-TODO: Gif here
+https://github.com/user-attachments/assets/a2b89be9-8494-4dff-93cb-86a8d40cfe82
 
 You can download the latest release from the Releases page:
 
