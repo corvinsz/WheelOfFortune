@@ -23,12 +23,38 @@ public partial class SettingsViewModel : ObservableObject
 		_snackbarMessageQueue = snackbarMessageService;
 		_themeService = themeService;
 		VelopackUpdater = velopackUpdater;
-		SelectedTheme = ThemeOptions.First();
+		SelectedTheme = BaseTheme.Inherit;
 		SelectedLanguage = Languages.First();
 	}
 
-	public BaseTheme[] ThemeOptions { get; } = Enum.GetValues<BaseTheme>();
 	public VelopackUpdaterViewModel VelopackUpdater { get; }
+
+	public bool IsSystemTheme
+	{
+		get => SelectedTheme == BaseTheme.Inherit;
+		set
+		{
+			if (value) SelectedTheme = BaseTheme.Inherit;
+		}
+	}
+
+	public bool IsLightTheme
+	{
+		get => SelectedTheme == BaseTheme.Light;
+		set
+		{
+			if (value) SelectedTheme = BaseTheme.Light;
+		}
+	}
+
+	public bool IsDarkTheme
+	{
+		get => SelectedTheme == BaseTheme.Dark;
+		set
+		{
+			if (value) SelectedTheme = BaseTheme.Dark;
+		}
+	}
 
 	[ObservableProperty]
 	private BaseTheme _selectedTheme;

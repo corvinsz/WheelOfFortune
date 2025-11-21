@@ -14,6 +14,11 @@
     <UserControl.Resources>
         <s:Boolean x:Key="TrueValue">True</s:Boolean>
         <s:Boolean x:Key="FalseValue">False</s:Boolean>
+
+        <SolidColorBrush x:Key="LightBackground" Color="#f5f5f5" />
+        <SolidColorBrush x:Key="LightForeground" Color="#c2c2c2" />
+        <SolidColorBrush x:Key="DarkBackground" Color="#2C2C2C" />
+        <SolidColorBrush x:Key="DarkForeground" Color="#4A4A4A" />
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -39,28 +44,142 @@
         <ScrollViewer Grid.Row="2" materialDesign:ScrollViewerAssist.IsAutoHideEnabled="True">
             <DockPanel LastChildFill="False">
 
-                <Grid DockPanel.Dock="Top">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0"
-                               VerticalAlignment="Center"
-                               Style="{StaticResource MaterialDesignHeadline5TextBlock}"
-                               Text="Theme" />
+                <TextBlock VerticalAlignment="Center"
+                           DockPanel.Dock="Top"
+                           Style="{StaticResource MaterialDesignHeadline5TextBlock}"
+                           Text="Theme" />
 
-                    <ListBox Grid.Column="1"
-                             Margin="4,8,8,4"
-                             ItemsSource="{Binding ThemeOptions}"
-                             SelectedItem="{Binding SelectedTheme}"
-                             Style="{StaticResource MaterialDesignToolToggleListBox}">
-                        <ListBox.ItemsPanel>
-                            <ItemsPanelTemplate>
-                                <WrapPanel />
-                            </ItemsPanelTemplate>
-                        </ListBox.ItemsPanel>
-                    </ListBox>
-                </Grid>
+                <WrapPanel Margin="8,0,8,8"
+                           HorizontalAlignment="Center"
+                           DockPanel.Dock="Top"
+                           Orientation="Horizontal">
+
+                    <!--  System Theme  -->
+                    <RadioButton Margin="8"
+                                 GroupName="ThemeSelection"
+                                 IsChecked="{Binding IsSystemTheme}"
+                                 Style="{StaticResource MaterialDesignRadioButton}">
+                        <StackPanel>
+                            <materialDesign:Card Width="160" Height="120">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <!--  Right half (dark)  -->
+                                    <StackPanel Grid.ColumnSpan="2"
+                                                Width="160"
+                                                Margin="0"
+                                                Background="{StaticResource DarkBackground}">
+                                        <StackPanel Margin="8">
+                                            <Border Width="32"
+                                                    Height="32"
+                                                    Background="{StaticResource DarkForeground}"
+                                                    CornerRadius="32" />
+                                            <materialDesign:Card Height="16"
+                                                                 Margin="0,8,0,0"
+                                                                 Background="{StaticResource DarkForeground}"
+                                                                 UniformCornerRadius="8" />
+                                            <materialDesign:Card Height="16"
+                                                                 Margin="0,8,0,0"
+                                                                 Background="{StaticResource DarkForeground}"
+                                                                 UniformCornerRadius="8" />
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <!--  Left half (light)  -->
+                                    <StackPanel Grid.Column="0"
+                                                Width="160"
+                                                Margin="0"
+                                                Background="{StaticResource LightBackground}">
+                                        <StackPanel Margin="8">
+                                            <Border Width="32"
+                                                    Height="32"
+                                                    Background="{StaticResource LightForeground}"
+                                                    CornerRadius="32" />
+                                            <materialDesign:Card Height="16"
+                                                                 Margin="0,8,0,0"
+                                                                 Background="{StaticResource LightForeground}"
+                                                                 UniformCornerRadius="8" />
+                                            <materialDesign:Card Height="16"
+                                                                 Margin="0,8,0,0"
+                                                                 Background="{StaticResource LightForeground}"
+                                                                 UniformCornerRadius="8" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </Grid>
+                            </materialDesign:Card>
+                            <TextBlock Margin="0,4,0,0"
+                                       HorizontalAlignment="Center"
+                                       Text="System" />
+                        </StackPanel>
+                    </RadioButton>
+
+                    <!--  Light Theme  -->
+                    <RadioButton Margin="8"
+                                 GroupName="ThemeSelection"
+                                 IsChecked="{Binding IsLightTheme}"
+                                 Style="{StaticResource MaterialDesignRadioButton}">
+                        <StackPanel>
+                            <materialDesign:Card Width="160" Background="{StaticResource LightBackground}">
+                                <StackPanel Margin="8">
+                                    <Border Width="32"
+                                            Height="32"
+                                            Background="{StaticResource LightForeground}"
+                                            CornerRadius="32" />
+                                    <materialDesign:Card Height="16"
+                                                         Margin="0,8,0,0"
+                                                         Background="{StaticResource LightForeground}"
+                                                         UniformCornerRadius="8" />
+                                    <materialDesign:Card Height="16"
+                                                         Margin="0,8,0,0"
+                                                         Background="{StaticResource LightForeground}"
+                                                         UniformCornerRadius="8" />
+                                    <materialDesign:Card Height="16"
+                                                         Margin="0,8,0,0"
+                                                         Background="{StaticResource LightForeground}"
+                                                         UniformCornerRadius="8" />
+                                </StackPanel>
+                            </materialDesign:Card>
+                            <TextBlock Margin="0,4,0,0"
+                                       HorizontalAlignment="Center"
+                                       Text="Light" />
+                        </StackPanel>
+                    </RadioButton>
+
+                    <!--  Dark Theme  -->
+                    <RadioButton Margin="8"
+                                 GroupName="ThemeSelection"
+                                 IsChecked="{Binding IsDarkTheme}"
+                                 Style="{StaticResource MaterialDesignRadioButton}">
+                        <RadioButton.Resources />
+                        <StackPanel>
+                            <materialDesign:Card Width="160" Background="{StaticResource DarkBackground}">
+                                <StackPanel Margin="8">
+                                    <Border Width="32"
+                                            Height="32"
+                                            Background="{StaticResource DarkForeground}"
+                                            CornerRadius="32" />
+                                    <materialDesign:Card Height="16"
+                                                         Margin="0,8,0,0"
+                                                         Background="{StaticResource DarkForeground}"
+                                                         UniformCornerRadius="8" />
+                                    <materialDesign:Card Height="16"
+                                                         Margin="0,8,0,0"
+                                                         Background="{StaticResource DarkForeground}"
+                                                         UniformCornerRadius="8" />
+                                    <materialDesign:Card Height="16"
+                                                         Margin="0,8,0,0"
+                                                         Background="{StaticResource DarkForeground}"
+                                                         UniformCornerRadius="8" />
+                                </StackPanel>
+                            </materialDesign:Card>
+                            <TextBlock Margin="0,4,0,0"
+                                       HorizontalAlignment="Center"
+                                       Text="Dark" />
+                        </StackPanel>
+                    </RadioButton>
+                </WrapPanel>
 
                 <Separator DockPanel.Dock="Top" Opacity="0.3" />
 
