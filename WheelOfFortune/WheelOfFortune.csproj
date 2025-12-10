@@ -35,6 +35,12 @@
 		<Page Include="App.xaml" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <SplashScreen Include="Assets\AppSplashScreen.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </SplashScreen>
+	</ItemGroup>
+
   <ItemGroup>
     <Compile Update="Localization\Strings.Designer.cs">
       <DesignTime>True</DesignTime>

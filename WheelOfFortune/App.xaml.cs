@@ -29,6 +29,8 @@ public partial class App : Application
 			})
 			.Run();
 
+		var splash = new SplashScreen("Assets/AppSplashScreen.png");
+		splash.Show(true);
 		// After bootstrap, continue with host + WPF startup
 		MainAsync(args).GetAwaiter().GetResult();
 	}
