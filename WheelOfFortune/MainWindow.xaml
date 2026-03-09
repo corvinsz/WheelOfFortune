@@ -1,6 +1,7 @@
 ﻿<Window x:Class="WheelOfFortune.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:confetti="clr-namespace:Wpf.Confetti;assembly=Wpf.Confetti"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:WheelOfFortune"
         xmlns:locale="clr-namespace:WheelOfFortune.Localization"
@@ -122,5 +123,6 @@
             </Grid>
         </materialDesign:DialogHost>
         <materialDesign:Snackbar ActionButtonStyle="{StaticResource MaterialDesignSnackbarActionMidButton}" MessageQueue="{Binding SnackbarMessageQueue}" />
+        <confetti:ConfettiControl x:Name="Confetti" />
     </Grid>
 </Window>

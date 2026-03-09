@@ -248,6 +248,8 @@ public partial class MainWindow : Window
 			var slice = _viewModel.Slices[selectedIndex];
 			_viewModel.History.Add(new HistoryEntry(slice.Label));
 
+			Confetti.Cannons(rate: 300);
+
 			var dialog = new Dialogs.MessageBoxDialog(Localization.LocalizationManager.Instance["ResultDialog_HeaderTextBlock_Text"],
 													  slice.Label,
 													  System.Windows.MessageBoxButton.OK);
