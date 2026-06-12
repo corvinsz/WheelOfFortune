@@ -16,7 +16,7 @@
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.5" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.5" />
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="10.0.5" />
-    <PackageReference Include="Velopack" Version="0.0.1369-g1d5c984" />
+    <PackageReference Include="Velopack" Version="1.2.0" />
     <PackageReference Include="Wpf.Confetti" Version="1.0.1" />
   </ItemGroup>
 
